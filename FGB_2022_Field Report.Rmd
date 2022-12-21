@@ -10,7 +10,7 @@ output:
 
 <h1 style="color: darkblue;font size=24, align=center" > National Coral Reef Monitoring Program</h1> 
 
-<h2 style="color: darkblue;font size=12"> Climate Monitoring Brief: St. Croix, USVI</h2>
+<h2 style="color: darkblue;font size=12"> Climate Monitoring Brief: Flower Garden Banks National Marine Sanctuary</h2>
 --------
 
 
@@ -69,7 +69,7 @@ National Oceanic Atmospheric Administration</h4>
 <br>
 
 <h5 style="font size=6">
-N. Besemer, A. Palacio, A. Webb, G. Kolodziej, M. Chakraborty, I. Enochs - October 2022
+N. Besemer, A. Palacio, A. Webb, I. Enochs - December 2022
 </h5>
 
 ```{r logos, echo=FALSE, fig.align='left', out.width='20%'}
@@ -82,20 +82,20 @@ plot_grid(p1, p2)
  
 --------
 
-### About this summary brief
+### Mission
 
-The NOAA Atlantic Oceanographic and Meteorological Laboratory (AOML) conducts the long-term National Coral Reef Monitoring Program (NCRMP) to track the status and trends of coral reef ecosystems of the U.S. Atlantic and Caribbean coral reef jurisdictions. This summary brief provides an overview of the most recent survey efforts to St. Croix USVI.
+The AOML Coral Program tracks the status and trends of coral reef ecosystems of the U.S. Atlantic and Caribbean as part of the National Coral Reef Monitoring Program (NCRMP). This summary brief provides an overview of the most recent climate monitoring efforts at Flower Garden Banks National Marine Sanctuary (FGBNMS).
+
 
 
 ### Expedition summary
 
-* The NCRMP Atlantic climate monitoring team recently traveled to St. Croix in the US Virgin islands from September 4th to September 9th, 2022
-* 16 different sites were visited by four team members and collaborators completing a total of 45 dives. 
-* These sites represent temporal‐resolution monitoring with moored instruments at fixed time‐series which are placed on depth gradient to assess how vertical structure affects reef status and trends.
+* The AOML Coral Program conducted NCRMP climate monitoring operations at FGBNMS from October 3rd to October 8th, 2022
+* A total of eight different sites were visited by ten team members and sanctuary collaborators completing a total of 98 dives. 
 
 --------
 
-### Data collection
+### Data collection summary
 
 ```{r get Temp, include=FALSE}
 # 1. Import all processed temperature data
@@ -149,7 +149,8 @@ STR_all$Transect<-factor(STR_all$Transect,
 summary(STR_all$Transect)
 ```
 
-* Subsurface **temperature** recorders (STRs) were recovered and redeployed at all 4 transects, each one composed by 3-4 depths (Fig. 1). Overall,  more than 4 million temperature observations were collected:
+**Subsurface temperature** 
+Subsurface temperature recorders (STRs) were recovered and redeployed at east and west bank transects, each one composed by 4 depths (Fig. 1). In total,  almost 3 million temperature observations were collected (Table 1)
   
 ```{r Temp observations}
 Cases_Loc_depth<-STR_all %>% count(Depth, Transect,
@@ -162,7 +163,7 @@ Cases_Loc_depth$Total<-rowSums(Cases_Loc_depth[, c(2:5)], na.rm=TRUE)
 
 kable(Cases_Loc_depth,
       format.args = list(big.mark = ","),
-      caption = "Table 1: Number of temperature observations collected by transect and depth")
+      caption = "Table 1: Number of temperature observations collected by transect and depth. Sites marked with NA were not sucessfully recovered")
 ```
 
 
@@ -244,20 +245,22 @@ light_count<-paste0("Light = ", nrow(light), " observatons")
 #light_count
 ```
 
-
-* At Salt River, the north side of St. Croix, short term instruments (72h) were deployed to  monitor daily fluctuations in: 
-  - **Current**: 286 observations
-  - **pH**: 285 observations
-  - **Light**: 288 observations
-  - **Carbonate Chemistry**: XX samples collected
-  - **Benthic cover**: XX landscape mosaics 
-  - **Carbonate budget surveys**: Benthic cover, sponge, urchin and parrotfish surveys completed at XX transects
+**NCRMP CLimate Fixed Sentinel Site Monitoring**
+At our East Buoy 3, 15m site, located on the East Bank, short term instruments (72h) were deployed to  monitor daily fluctuations in: 
+ * **Current**: 286 observations
+ * **pH**: 285 observations
+ * **Light**: 288 observations
+ * **Carbonate chemistry**: 21 samples collected
+ 
 
 <br>
-
-* Additionally, changes in bioerosion and accretion were monitored at all 15m sites by recording:
-  - **Bioerosion**: 39 Bioerosion Monitoring Units (BMUs) collected, 40 redeployed 
-  - **Calcification**: 18 Calcification Accretions Units (CAUs) collected, 20 redeployed
+**Habitat persistence**
+Changes in Bioerosion and accretion were monitored
+ * **Carbonate budget surveys**: Benthic cover, sponge, urchin and parrotfish surveys completed at 6 transects
+ * **Bioerosion**: 14 Bioerosion Monitoring Units (BMUs) collected, 15 redeployed 
+ * **Calcification**: 5 Calcification Accretions Units (CAUs) collected, 5 redeployed
+ * **Benthic cover**: 6 landscape mosaics 
+ 
 
 
 <br>
@@ -388,9 +391,9 @@ light_count<-paste0("Light = ", nrow(light), " observatons")
 
 -----
 
-#### Temperature
+#### Subsurface Temperature
 
-Three years of temperature measurements were retrieved and processed from 14 sites (depths). Temperature was measured using SeaBird Electronics Subsurface Temperature Recorders (STR)s that collected data at 5-minute intervals.
+The temperatures that marine organisms experience are a function of depth and local oceanographic conditions. To monitor this, two cross-shelf transects were established at each bank within the sanctuary. Three years of temperature measurements were retrieved and processed from eigth sites (depths). Each transect consists of STRs at 4 depths (15, 20, 25, 30m; Fig. 2). Temperature was measured using SeaBird Electronics Subsurface Temperature Recorders (STR)s that collected data at 5-minute intervals. The STRs from west bank were not able to be collected during the last field monitoring trip in 2019. Weve included the entire temperature data collectino from east bank for better comparison to west bank.MORE TO THIS.
 
 
 ```{r filter Temp, include=FALSE}
@@ -474,7 +477,7 @@ Figure2_1 <- ggarrange(plot1, box1, widths = c(8/10, 2/10))
 Figure2_1
 ```
 
-<font size="2"> **Figure 2:** Temperature conditions at four transects in St. Croix (east, west, north and south) representing a depth gradient (1m, 5m, 15m and 25m). Data were collected from September 2019 to September 2022. However, STR from north station - 25m stopped recording earlier on February 2022 and STRs from south station - 1m on November 2011. </font>
+<font size="2"> **Figure 2:** Temperature conditions at two transects in FGBNMS (east bank, and west bank) representing a depth gradient (15m, 20m, 25m and 30m). Data were collected from September 2015 to October 2022. However, STR from west Bank - 15m was not recovered. </font>
  
 ```{r, echo = F, include=F}
 #Temp.Depth <- plyr::ddply (str_all, .(Depth), summarise,
@@ -509,14 +512,17 @@ STR_all_summary <- STR_all %>%
 STR_all_summary
 
 ```
-
+NEED TO EDIT THIS TEXT TO FIT ANALYSIS FOR FGB DATA
 Temperature values were similar among the transects and depths depths with the lowest temperatures generally occurring in March (mean: 26.56$^\circ$C, min: 25.64$^\circ$C, max: 28.27$^\circ$C) and the the highest temperatures in September (mean: 29.68$^\circ$C, min: 27.22$^\circ$C, max: 32.11$^\circ$C). The south 1m station presented the highest temperature variability and the maximum temperature values recorded in October 2021 (32.16$^\circ$C) and September 2020 (32.11$^\circ$C) (Fig. 2).
 
 -----
 
 #### Diurnal Suite Deployment
 
-At the North 15m site, Salt River Bay, additional instruments were deployed for a 72-hour diurnal suite that monitored pH, temperature, light and current speed (Fig. 3). The SeaFET pH logger, EcoPAR and Tiltmeter collected measurements at 15-minute intervals.
+Seawater carbonate chemistry can fluctuate diurnally, due to biological forcing and processes such as photosynthesis and respiration, as well as calcification and dissolution. To characterize this, a suite of instruments were deployed for a 72-hour period at the East Bank 15m site, East Buoy 3 (Fig. 3). A SeaFET was used to log pH, an EcoPAR measured Photosynthetically Active Radiation (PAR), and a Lowell Tiltmeter measured current speed and direction. Each collected measurements at 15-minute intervals.
+
+
+To accompany and validate the diurnal suite, discrete water samples were collected at three-hour intervals (n=21) using Subsurface Automatic Samplers (SAS, https://www.coral.noaa.gov/accrete/sas/). These samples will be analyzed for Total Alkalinity (TA), Dissolved Inorganic Carbon (DIC), and Spectrophotometric pH (SpecpH). Using these metrics, we can get the calculated values for pCO2 and aragonite saturation state which provide the full suite of carbonate chemistry parameters.
 
 
 ```{r ph and temp combined v3,echo=FALSE, warning=FALSE,fig.width = 9.5, fig.height = 3.5}
@@ -660,11 +666,8 @@ ggdraw(plot_grid(plot_grid(pH_Temp_Plot,
                  ncol = 1, rel_heights=c(1, 0.1)))
 ```
 
-<font size="2">**Figure 3:** Salt River Bay (N 15m) diurnal suite monitoring from September 5th to 8th. Top panel: pH and temperature from SeaFET. Bottom panel: Photosynthetically Available Radiation (PAR) and current speed from EcoPAR and Tiltmeter. Grey blocks denote night time throughout sequence of the plot. Instruments measured parameters every 15 minutes. </font>
+<font size="2">**Figure 3:** Data from East Buoy 3 diurnal suite monitoring from October 4th to Oct 7th. Top panel: pH and temperature from SeaFET. Bottom panel: Photosynthetically Available Radiation (PAR) and current speed from EcoPAR and Tiltmeter. Grey blocks denote night time throughout sequence of the plot. Instruments measured parameters every 15 minutes.</font>
 
-
-
-As part of the diurnal suite, discrete water samples were collected at three-hour intervals (n=15) using Subsurface Automatic Samplers (SAS). These samples will be analyzed for Total Alkalinity (TA), Dissolved Inorganic Carbon (DIC), and Spectrophotometric pH (SpecpH). Using these metrics we can get the calculated values for pCO2 and aragonite saturation state. For more information on SAS vist https://www.coral.noaa.gov/accrete/sas/
 
 ```{r SASs, echo=FALSE, out.width = '50%', fig.cap="Submered Automated Samplers (SAS) deployed to collect water samples every 3 hours", fig.align='center'}
 
@@ -674,9 +677,11 @@ knitr::include_graphics("Data/SAS.jpg")
 
 -----
 
-#### Carbonate budgets
+#### Habitat persistence
 
-At Salt River Bay, six transects were established and surveyed in 2019 to obtain carbonate budgets which describe the summation of all processes contributing to calcification and bioerosion on a reef.  This metric is used to determine if a reef is in a state of net accretion; growing or net loss; flattening. We revisited this site and recorded the abundance and cover of all major carbonate producing (coral and CCA) and eroding taxa (urchin, bioeroding sponges and parrotfish) to find out the new carbonate budget status after 3 years. 
+**Carbonate budget** assessments use transect-based surveys to quantify the abundance of carbonate producers, such as corals and crustose coralline algae, as well as carbonate bioeroders, such as grazing parrotfish and sea urchins. Abundances are multiplied by taxon- specific rates of carboante alteration to determine if a reef is in a state of net accretion (habitat growth) or net loss (habitat loss). At East Buoy 3, six transects were established and surveyed in 2015 to obtain carbonate budgets. We revisited this site in 2019 and 2022 to find out the new status of carbonate budget after six years. The transect results showed that carbonate budgets have decreased in 2022. This trend is driven by a reduction in coral cover and calcification as well as a steep increase in parrotfish erosion. MORE SUMMAITON TEXT FOR FGB CARB BUDGETS
+
+
 
 ```{r, Carbonate_B_plot, echo=FALSE, warning=FALSE, fig.width = 7.5, fig.height = 3.5}
 ## boxplots production
@@ -722,23 +727,12 @@ ggarrange(CB_A_plot, CB_B_plot,
           ncol = 2, nrow = 1, widths = c(0.8, 2.2))
 ```
 
-<font size="2">**Figure 4:** Carbonate budgets Salt River Bay in 2019 and 2022 and the processes contributing to calcification and bioerosion.  Carbonate budgets declined in 2022 compared to 2019, mainly due to the reduction in coral production and the increase in urchin erosion. </font>
+<font size="2">**Figure 4:** Carbonate budgets from East FGB in 2015, 2019 and 2022 and the processes contributing to calcification and bioerosion.  The horizontal line in the "Net carbonate production panel" denotes accretionary stasis, the point where the budget flips from habitat grpwth to loss. PF represents parrotfish. </font>
 
-The transect results showed that carbonate budgets have become negative in 2022, which implies that this site has shifted to being net erosional over the past 3 years.
 
------
 
-#### Other Deliverables
+**Landscape mosaics** are used to quantify the benthic community, and to monitor changes in coral cover over time. Thousands of underwater images are digitally stitched together to create a high-resolution archive of the reef at the time of collection.
 
-* **Calcification Accretion Units (CAUs)** and **Bioerosion Monitoring Units (BMUs)** were collected and redeployed for the next sampling cycle. CAUs are processed by the Pacific Climate group and the data will be available within a year. BMUs will be dried and cleaned using a hydrogen peroxide solution. These samples will be weighed and scanned using a Macro CT scanner and then compared to their pre-scans to quantify bioerosion. Data will be available in a year. Please reference previous datasets for more information.
-
-```{r BMUs, echo=FALSE, out.width = '50%', fig.cap="CAU and BMU pair before retreval after being deployed for 3 years. CAUs are 2 parallel PVC plates to quantify settled accretors. BMU is mounted coral skeleton installed at the base of the metal stake and has been encrusted.", fig.align='center'}
-
-knitr::include_graphics("Data/CAUBMU.jpg")
-
-```
-
-* **Landscape mosaics** (n=6) were completed to monitor changes in benthic cover.
 
 ```{r mosaic, echo=FALSE, out.width = '50%', fig.cap="Landscape Mosaic collected from transect 6", fig.align='center'}
 
@@ -746,22 +740,30 @@ knitr::include_graphics("Data/mosaic.jpg")
 
 ```
 
+Finally, **Calcification Accretion Units (CAUs)** and **Bioerosion Monitoring Units (BMUs)** were used to investigate the balance between calcification and erosion. CAUs and BMUs were collected and redeployed for the next sampling cycle. CAUs are processed by the Pacific Climate group and the data will be available within a year. BMUs will be dried and cleaned using a hydrogen peroxide solution. These samples will be weighed and scanned using a CT scanner and then compared to their pre-scans to quantify bioerosion. Data will be available in a year. Please reference previous datasets for more information.
+
+
+```{r BMUs, echo=FALSE, out.width = '50%', fig.cap="CAU and BMU pair before retreval after being deployed for three years. CAUs are two parallel PVC plates to quantify settled accretors. BMU is mounted coral skeleton installed at the base of the metal stake and has been encrusted.", fig.align='center'}
+
+knitr::include_graphics("Data/CAUBMU.jpg")
+
+```
 
 -----
 
 ### About the monitoring program
 
 AOML's climate monitoring is a key part of the National Coral Reef Monitoring Program of NOAA's Coral Reef Conservation Program (CRCP), providing integrated, consistent, and comparable data across U.S. Managed coral reef ecosystems.
-CRCP monitoring efforts aim to:
+NCRMP efforts aim to:
 
-* Document the status of reef species of ecological and economic importance.
-* Track and assess changes in reef communities in response to environmental stressors or human activities.
-* Evaluate the effectiveness of specific management strategies and identify actions for future and adaptive responses.
+* Document the status of reef species of ecological and economic importance
+* Track and assess changes in reef communities in response to environmental stressors or human activities
+* Deliver high–quality data, data products, and tools to the coral reef conservation community
 
 
 ### Point of Contact
 
-Atlantic Climate team lead: nicole.besemer@noaa.gov
+Atlantic Climate Operations Coordniator: nicole.besemer@noaa.gov
 
 Principal Investigator: ian.enochs@noaa.gov
 
@@ -777,14 +779,14 @@ NCRMP climate monitoring: https://www.coris.noaa.gov/monitoring/climate.html
 NOAA Atlantic Oceanographic and Meteorological Laboratory:
 http://www.aoml.noaa.gov/
 
-[USVI Reef Status Report 2020](https://www.coris.noaa.gov/monitoring/status_report/docs/USVI_508_compliant.pdf)
+[FGBNMS Reef Status Report 2020](https://www.coris.noaa.gov/monitoring/status_report/docs/FGB_508_compliant.pdf)
 
 [National Coral Reef Status Report 2020](https://repository.library.noaa.gov/view/noaa/27295)
 
 ### Acknowledgements
 
 
-These efforts were jointly funded by NOAA's CRCP and OAP. We would like to sincerely thank the National Park Service as well as Caribbean Sea Adventures for supporting our field efforts and assisting monitoring surveys
+These efforts were jointly funded by NOAA's CRCP project #743 and OAP. We would like to sincerely thank Flower Garden Banks and  the National Marine Santuary Foundation for supporting our field efforts and assisting monitoring surveys.
 
 ```{r fundingsources, include=FALSE, fig.width = 10, fig.height = 4, fig.align='center', out.width='100%'}
 
@@ -816,4 +818,6 @@ funding
 knitr::include_graphics("Data/Fieldteam.jpg")
 ```
 
-**AOMLs NCRMP Atlantic and Caribbean Climate Team**: I. Enochs, N. Besemer, G. Kolodziej, M. Chakraborty, A.Boyd, M. Jankulak, A. Palacio-Castro, A. Webb, B. Chomitz
+**AOMLs NCRMP Atlantic and Caribbean Climate Team**: I. Enochs, N. Besemer, G. Kolodziej, M. Chakraborty, A.Boyd, M. Jankulak, A. Palacio-Castro, A. Webb, B. Chomitz, 
+**Field team support and collaborators:** M. Studivan, K. Eaton, M. Johnston, K. O'Connell
+
