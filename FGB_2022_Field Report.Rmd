@@ -6,6 +6,8 @@ output:
     fig_position: center
   always_allow_html: true
   word_document: default
+editor_options: 
+  chunk_output_type: console
 ---
 
 <h1 style="color: darkblue;font size=24, align=center" > National Coral Reef Monitoring Program</h1> 
@@ -135,7 +137,10 @@ STR_all <-
 summary(STR_all$Depth)
 STR_all$Depth<-as.factor(STR_all$Depth)
 STR_all$Depth[STR_all$Depth=="21m"]<-"21m"
-STR_all$Depth[STR_all$Depth=="24m"]<-"25m" # 24m changed to 25 to lot easier
+STR_all$Depth[STR_all$Depth=="24m"]<-"25m" # 24m changed to 25 to plot easier
+STR_all$Depth[STR_all$Depth=="27m"]<-"25m" # 27m changed to 25 to plot easier
+STR_all$Depth[STR_all$Depth=="33m"]<-"30m" # 27m changed to 30 to plot easier
+STR_all$Depth[STR_all$Depth=="38m"]<-"35m" # 38m changed to 35 to plot easier
 STR_all$Depth<-factor(STR_all$Depth, 
                 levels = c("21m", "25m", "30m","35m"))
 summary(STR_all$Depth)
@@ -150,7 +155,7 @@ summary(STR_all$Transect)
 ```
 
 **Subsurface temperature** 
-Subsurface temperature recorders (STRs) were recovered and redeployed at east and west bank transects, each one composed by 4 depths (Fig. 1). In total,  almost 3 million temperature observations were collected (Table 1)
+Subsurface temperature recorders (STRs) were recovered and redeployed at east and west bank transects, each one composed by 4 depths (Fig. 1). In total,  more than 4 million temperature observations were collected (Table 1)
   
 ```{r Temp observations}
 Cases_Loc_depth<-STR_all %>% count(Depth, Transect,
@@ -245,9 +250,11 @@ light_count<-paste0("Light = ", nrow(light), " observatons")
 #light_count
 ```
 
-**NCRMP CLimate Fixed Sentinel Site Monitoring**
+**NCRMP Climate Fixed Sentinel Site Monitoring**
+
 At our East Buoy 3, 15m site, located on the East Bank, short term instruments (72h) were deployed to  monitor daily fluctuations in: 
- * **Current**: 286 observations
+
+ * **Current**: 284 observations
  * **pH**: 285 observations
  * **Light**: 288 observations
  * **Carbonate chemistry**: 21 samples collected
@@ -255,10 +262,15 @@ At our East Buoy 3, 15m site, located on the East Bank, short term instruments (
 
 <br>
 **Habitat persistence**
+
 Changes in Bioerosion and accretion were monitored
+
  * **Carbonate budget surveys**: Benthic cover, sponge, urchin and parrotfish surveys completed at 6 transects
+ 
  * **Bioerosion**: 14 Bioerosion Monitoring Units (BMUs) collected, 15 redeployed 
+ 
  * **Calcification**: 5 Calcification Accretions Units (CAUs) collected, 5 redeployed
+ 
  * **Benthic cover**: 6 landscape mosaics 
  
 
@@ -387,13 +399,13 @@ Changes in Bioerosion and accretion were monitored
   
 ```
 
-<font size="2"> **Figure 1:** Study sites and depths in St. Croix, USVI </font>
+<font size="2"> **Figure 1:** Study sites and depths in Flower Garden Banks </font>
 
 -----
 
 #### Subsurface Temperature
 
-The temperatures that marine organisms experience are a function of depth and local oceanographic conditions. To monitor this, two cross-shelf transects were established at each bank within the sanctuary. Three years of temperature measurements were retrieved and processed from eigth sites (depths). Each transect consists of STRs at 4 depths (15, 20, 25, 30m; Fig. 2). Temperature was measured using SeaBird Electronics Subsurface Temperature Recorders (STR)s that collected data at 5-minute intervals. The STRs from west bank were not able to be collected during the last field monitoring trip in 2019. Weve included the entire temperature data collectino from east bank for better comparison to west bank.MORE TO THIS.
+The temperatures that marine organisms experience are a function of depth and local oceanographic conditions. To monitor this, two cross-shelf transects were established at each bank within the sanctuary. Four years of temperature measurements were retrieved at the East bank (4 depths) and seven at the West bank (3 depths, Fig. 2). Temperature was measured using SeaBird Electronics Subsurface Temperature Recorders (STR)s that collected data at 5-minute intervals. The STRs from west bank were not able to be collected during the last field monitoring trip in 2019. We have included the entire temperature data collection from east bank for better comparison to west bank.MORE TO THIS.
 
 
 ```{r filter Temp, include=FALSE}
@@ -449,8 +461,8 @@ plot1<-ggplot(data = STR_all) +
                      breaks = seq(0,50,2.5)) +
   guides(colour = guide_legend(override.aes = list(size = 8)))+
   theme(legend.key=element_rect(fill=NA)) +
-  #facet_grid(Transect~.)
-  facet_wrap(~Transect, ncol=1, scales = "free_x")
+  facet_grid(Transect~.)
+  #facet_wrap(~Transect, ncol=1, scales = "free_x")
 #plot1
 
 box1 <- ggplot(data = STR_all) +
@@ -477,7 +489,7 @@ Figure2_1 <- ggarrange(plot1, box1, widths = c(8/10, 2/10))
 Figure2_1
 ```
 
-<font size="2"> **Figure 2:** Temperature conditions at two transects in FGBNMS (east bank, and west bank) representing a depth gradient (15m, 20m, 25m and 30m). Data were collected from September 2015 to October 2022. However, STR from west Bank - 15m was not recovered. </font>
+<font size="2"> **Figure 2:** Temperature conditions at two transects in FGBNMS (east bank, and west bank) representing a depth gradient (21m, 25m, 30 and 35m). Data were collected from September 2015 to October 2022. However, STR from west Bank - 15m was not recovered. </font>
  
 ```{r, echo = F, include=F}
 #Temp.Depth <- plyr::ddply (str_all, .(Depth), summarise,
@@ -512,8 +524,8 @@ STR_all_summary <- STR_all %>%
 STR_all_summary
 
 ```
-NEED TO EDIT THIS TEXT TO FIT ANALYSIS FOR FGB DATA
-Temperature values were similar among the transects and depths depths with the lowest temperatures generally occurring in March (mean: 26.56$^\circ$C, min: 25.64$^\circ$C, max: 28.27$^\circ$C) and the the highest temperatures in September (mean: 29.68$^\circ$C, min: 27.22$^\circ$C, max: 32.11$^\circ$C). The south 1m station presented the highest temperature variability and the maximum temperature values recorded in October 2021 (32.16$^\circ$C) and September 2020 (32.11$^\circ$C) (Fig. 2).
+
+Temperature values were lower in the deeper stations (30 and 35m) of both east and west banks. A particular cold winter was recorded in the year 2021, when monthly mean temperatures were below 20.6$^\circ$C at all depths. September of 2016 was the hottest month recorded in both banks, with mean temperatures higher than 30.76$^\circ$C) at the 21, 25 and 30m stations, and higher than 29.77$^\circ$C) at the 35m stations (Fig. 2).
 
 -----
 
@@ -669,7 +681,7 @@ ggdraw(plot_grid(plot_grid(pH_Temp_Plot,
 <font size="2">**Figure 3:** Data from East Buoy 3 diurnal suite monitoring from October 4th to Oct 7th. Top panel: pH and temperature from SeaFET. Bottom panel: Photosynthetically Available Radiation (PAR) and current speed from EcoPAR and Tiltmeter. Grey blocks denote night time throughout sequence of the plot. Instruments measured parameters every 15 minutes.</font>
 
 
-```{r SASs, echo=FALSE, out.width = '50%', fig.cap="Submered Automated Samplers (SAS) deployed to collect water samples every 3 hours", fig.align='center'}
+```{r SASs, echo=FALSE, out.width = '50%', fig.cap="Figure 4: Submered Automated Samplers (SAS) deployed to collect water samples every 3 hours", fig.align='center'}
 
 knitr::include_graphics("Data/SAS.jpg")
 
@@ -709,8 +721,9 @@ CB_A_plot<-ggplot(CB,aes(Year,value,fill=Year))+
 mdata<-melt(data,id.vars=c(1,8:13))
 mdata$Year<-as.character(mdata$Year)
 mdata[c(8)] <- lapply(mdata[c(8)], gsub, pattern = ".", replacement = " ", fixed = TRUE)
-mdata$variable <- factor(mdata$variable, levels = c("Coral production","CCA production", "PF erosion",
-                                                    "Urchin erosion","Macro bioerosion","Micro bioerosion"))
+mdata$variable <- factor(mdata$variable, levels = c("Coral production","CCA production", 
+                                                    "PF bioerosion", "Urchin bioerosion",
+                                                    "Macro bioerosion","Micro bioerosion"))
 CB_B_plot<-ggplot(mdata,aes(Year,value,fill=Year))+
   geom_boxplot(alpha=0.5)+
   scale_fill_manual(values=c("#330033", "#666699","#336666")) +
@@ -727,14 +740,14 @@ ggarrange(CB_A_plot, CB_B_plot,
           ncol = 2, nrow = 1, widths = c(0.8, 2.2))
 ```
 
-<font size="2">**Figure 4:** Carbonate budgets from East FGB in 2015, 2019 and 2022 and the processes contributing to calcification and bioerosion.  The horizontal line in the "Net carbonate production panel" denotes accretionary stasis, the point where the budget flips from habitat grpwth to loss. PF represents parrotfish. </font>
+<font size="2">**Figure 5:** Carbonate budgets from East FGB in 2015, 2019 and 2022 and the processes contributing to calcification and bioerosion.  The horizontal line in the "Net carbonate production panel" denotes accretionary stasis, the point where the budget flips from habitat grpwth to loss. PF represents parrotfish. </font>
 
 
 
 **Landscape mosaics** are used to quantify the benthic community, and to monitor changes in coral cover over time. Thousands of underwater images are digitally stitched together to create a high-resolution archive of the reef at the time of collection.
 
 
-```{r mosaic, echo=FALSE, out.width = '50%', fig.cap="Landscape Mosaic collected from transect 6", fig.align='center'}
+```{r mosaic, echo=FALSE, out.width = '50%', fig.cap="Figure 6: Landscape Mosaic collected from transect 6", fig.align='center'}
 
 knitr::include_graphics("Data/mosaic.jpg")
 
@@ -743,7 +756,7 @@ knitr::include_graphics("Data/mosaic.jpg")
 Finally, **Calcification Accretion Units (CAUs)** and **Bioerosion Monitoring Units (BMUs)** were used to investigate the balance between calcification and erosion. CAUs and BMUs were collected and redeployed for the next sampling cycle. CAUs are processed by the Pacific Climate group and the data will be available within a year. BMUs will be dried and cleaned using a hydrogen peroxide solution. These samples will be weighed and scanned using a CT scanner and then compared to their pre-scans to quantify bioerosion. Data will be available in a year. Please reference previous datasets for more information.
 
 
-```{r BMUs, echo=FALSE, out.width = '50%', fig.cap="CAU and BMU pair before retreval after being deployed for three years. CAUs are two parallel PVC plates to quantify settled accretors. BMU is mounted coral skeleton installed at the base of the metal stake and has been encrusted.", fig.align='center'}
+```{r BMUs, echo=FALSE, out.width = '50%', fig.cap="Figure 7: CAU and BMU pair before retreval after being deployed for three years. CAUs are two parallel PVC plates to quantify settled accretors. BMU is mounted coral skeleton installed at the base of the metal stake and has been encrusted.", fig.align='center'}
 
 knitr::include_graphics("Data/CAUBMU.jpg")
 
@@ -818,6 +831,7 @@ funding
 knitr::include_graphics("Data/Fieldteam.jpg")
 ```
 
-**AOMLs NCRMP Atlantic and Caribbean Climate Team**: I. Enochs, N. Besemer, G. Kolodziej, M. Chakraborty, A.Boyd, M. Jankulak, A. Palacio-Castro, A. Webb, B. Chomitz, 
+**AOMLs NCRMP Atlantic and Caribbean Climate Team**: I. Enochs, N. Besemer, G. Kolodziej, M. Chakraborty, A.Boyd, M. Jankulak, A. Palacio-Castro, A. Webb, B. Chomitz
+
 **Field team support and collaborators:** M. Studivan, K. Eaton, M. Johnston, K. O'Connell
 
