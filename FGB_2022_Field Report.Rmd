@@ -704,8 +704,8 @@ CB_A_plot<-ggplot(CB,aes(Year,value,fill=Year))+
 mdata<-melt(data,id.vars=c(1,8:13))
 mdata$Year<-as.character(mdata$Year)
 mdata[c(8)] <- lapply(mdata[c(8)], gsub, pattern = ".", replacement = " ", fixed = TRUE)
-mdata$variable <- factor(mdata$variable, levels = c("Coral production","CCA production", "PF erosion",
-                                                    "Urchin erosion","Macro bioerosion","Micro bioerosion"))
+mdata$variable <- factor(mdata$variable, levels = c("Coral production","CCA production", "PF bioerosion",
+                                                    "Urchin bioerosion","Macro bioerosion","Micro bioerosion"))
 CB_B_plot<-ggplot(mdata,aes(Year,value,fill=Year))+
   geom_boxplot(alpha=0.5)+
   scale_fill_manual(values=c("#330033", "#666699","#336666")) +
