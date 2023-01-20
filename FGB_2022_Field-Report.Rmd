@@ -1,11 +1,11 @@
 ---
 output:
+  word_document: default
+  always_allow_html: true
   html_document:
     fig_height: 5
     fig_width: 5
     fig_position: center
-  always_allow_html: true
-  word_document: default
 editor_options: 
   chunk_output_type: console
 ---
