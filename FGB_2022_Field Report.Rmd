@@ -69,7 +69,7 @@ National Oceanic Atmospheric Administration</h4>
 <br>
 
 <h5 style="font size=6">
-N. Besemer, A. Palacio, A. Webb, I. Enochs - December 2022
+N. Besemer, A. Palacio, A. Webb, I. Enochs - February 2023
 </h5>
 
 ```{r logos, echo=FALSE, fig.align='left', out.width='20%'}
@@ -91,7 +91,7 @@ The AOML Coral Program tracks the status and trends of coral reef ecosystems of 
 ### Expedition summary
 
 * The AOML Coral Program conducted NCRMP climate monitoring operations at FGBNMS from October 3rd to October 8th, 2022
-* A total of eight different sites were visited by ten team members and sanctuary collaborators completing a total of 98 dives. 
+* A total of eight different sites were visited by ten team members and local sanctuary collaborators completing a total of 98 dives. 
 
 --------
 
@@ -246,7 +246,7 @@ light_count<-paste0("Light = ", nrow(light), " observatons")
 ```
 
 **NCRMP CLimate Fixed Sentinel Site Monitoring**
-At our East Buoy 3, 15m site, located on the East Bank, short term instruments (72h) were deployed to  monitor daily fluctuations in: 
+At East Buoy 3, 20m site, located on the East Bank, short term instruments (72h) were deployed to  monitor daily fluctuations in: 
  * **Current**: 286 observations
  * **pH**: 285 observations
  * **Light**: 288 observations
@@ -393,7 +393,7 @@ Changes in Bioerosion and accretion were monitored
 
 #### Subsurface Temperature
 
-The temperatures that marine organisms experience are a function of depth and local oceanographic conditions. To monitor this, two cross-shelf transects were established at each bank within the sanctuary. Three years of temperature measurements were retrieved and processed from eigth sites (depths). Each transect consists of STRs at 4 depths (15, 20, 25, 30m; Fig. 2). Temperature was measured using SeaBird Electronics Subsurface Temperature Recorders (STR)s that collected data at 5-minute intervals. The STRs from west bank were not able to be collected during the last field monitoring trip in 2019. Weve included the entire temperature data collectino from east bank for better comparison to west bank.MORE TO THIS.
+The temperatures that marine organisms experience are a function of depth and local oceanographic conditions. To monitor this, two cross-shelf transects were established at each bank within the sanctuary. Three years of temperature measurements were retrieved and processed from eigth sites (depths). Each transect consists of STRs at 4 depths (20, 25, 30, 35m; Fig. 2). Temperature was measured using SeaBird Electronics Subsurface Temperature Recorders (STR)s that collected data at 5-minute intervals. The STRs from west bank were not able to be collected during the last field monitoring trip in 2019. Weve included the entire temperature data collectino from east bank for better comparison to west bank. MORE TO THIS.
 
 
 ```{r filter Temp, include=FALSE}
@@ -477,7 +477,7 @@ Figure2_1 <- ggarrange(plot1, box1, widths = c(8/10, 2/10))
 Figure2_1
 ```
 
-<font size="2"> **Figure 2:** Temperature conditions at two transects in FGBNMS (east bank, and west bank) representing a depth gradient (15m, 20m, 25m and 30m). Data were collected from September 2015 to October 2022. However, STR from west Bank - 15m was not recovered. </font>
+<font size="2"> **Figure 2:** Temperature conditions at two transects in FGBNMS (east bank, and west bank) representing a depth gradient (20m, 25m, 30m and 35m). Data were collected from September 2015 to October 2022. However, STR from west Bank - 20m was not recovered. </font>
  
 ```{r, echo = F, include=F}
 #Temp.Depth <- plyr::ddply (str_all, .(Depth), summarise,
@@ -512,17 +512,18 @@ STR_all_summary <- STR_all %>%
 STR_all_summary
 
 ```
-NEED TO EDIT THIS TEXT TO FIT ANALYSIS FOR FGB DATA
-Temperature values were similar among the transects and depths depths with the lowest temperatures generally occurring in March (mean: 26.56$^\circ$C, min: 25.64$^\circ$C, max: 28.27$^\circ$C) and the the highest temperatures in September (mean: 29.68$^\circ$C, min: 27.22$^\circ$C, max: 32.11$^\circ$C). The south 1m station presented the highest temperature variability and the maximum temperature values recorded in October 2021 (32.16$^\circ$C) and September 2020 (32.11$^\circ$C) (Fig. 2).
+
+Temperature values were lower in the deeper stations (30 and 35m) of both east and west banks. A particular cold winter was recorded in the year 2021, when monthly mean temperatures were below 20.6∘C at all depths. September of 2016 was the hottest month recorded in both banks, with mean temperatures higher than 30.76∘C) at the 21, 25 and 30m stations, and higher than 29.77∘C) at the 35m stations (Fig. 2).
 
 -----
 
 #### Diurnal Suite Deployment
 
-Seawater carbonate chemistry can fluctuate diurnally, due to biological forcing and processes such as photosynthesis and respiration, as well as calcification and dissolution. To characterize this, a suite of instruments were deployed for a 72-hour period at the East Bank 15m site, East Buoy 3 (Fig. 3). A SeaFET was used to log pH, an EcoPAR measured Photosynthetically Active Radiation (PAR), and a Lowell Tiltmeter measured current speed and direction. Each collected measurements at 15-minute intervals.
+Seawater carbonate chemistry can fluctuate diurnally, due to biological forcing and processes such as photosynthesis and respiration, as well as calcification and dissolution. To characterize this, discrete water samples were collected at three-hour intervals (n=15) using Subsurface Automatic
+Samplers (SAS, https://www.coral.noaa.gov/accrete/sas/, Fig. 3). These samples will be analyzed for Total Alkalinity (TA), Dissolved Inorganic Carbon (DIC), and Spectrophotometric pH (SpecpH), which will be used to calculate pCO2 and aragonite saturation state (ΩAragonite).
 
 
-To accompany and validate the diurnal suite, discrete water samples were collected at three-hour intervals (n=21) using Subsurface Automatic Samplers (SAS, https://www.coral.noaa.gov/accrete/sas/). These samples will be analyzed for Total Alkalinity (TA), Dissolved Inorganic Carbon (DIC), and Spectrophotometric pH (SpecpH). Using these metrics, we can get the calculated values for pCO2 and aragonite saturation state which provide the full suite of carbonate chemistry parameters.
+A suite of instruments was deployed for a 72-hour period at the East Bank 20m site (Fig. 4). A SeaFET was used to log pH, an EcoPAR measured Photosynthetically Active Radiation (PAR), and a Lowell Tiltmeter measured current speed and direction. Each collected measurements at 15-minute intervals.
 
 
 ```{r ph and temp combined v3,echo=FALSE, warning=FALSE,fig.width = 9.5, fig.height = 3.5}
