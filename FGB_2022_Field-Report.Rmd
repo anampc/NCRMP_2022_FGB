@@ -1,11 +1,11 @@
 ---
 output:
-  word_document: default
-  always_allow_html: true
   html_document:
     fig_height: 5
     fig_width: 5
     fig_position: center
+  always_allow_html: true
+  word_document: default
 editor_options: 
   chunk_output_type: console
 ---
@@ -250,17 +250,11 @@ light_count<-paste0("Light = ", nrow(light), " observatons")
 #light_count
 ```
 
-<<<<<<< HEAD:FGB_2022_Field-Report.Rmd
+
 **NCRMP Climate Fixed Sentinel Site Monitoring**
 
-At our East Buoy 3, 15m site, located on the East Bank, short term instruments (72h) were deployed to  monitor daily fluctuations in: 
-
- * **Current**: 284 observations
-=======
-**NCRMP CLimate Fixed Sentinel Site Monitoring**
 At East Buoy 3, 20m site, located on the East Bank, short term instruments (72h) were deployed to  monitor daily fluctuations in: 
  * **Current**: 286 observations
->>>>>>> 531e99b8748c704a6fec0421826fa4c7490c56dd:FGB_2022_Field Report.Rmd
  * **pH**: 285 observations
  * **Light**: 288 observations
  * **Carbonate chemistry**: 21 samples collected
@@ -389,11 +383,7 @@ map
 
 #### Subsurface Temperature
 
-<<<<<<< HEAD:FGB_2022_Field-Report.Rmd
-The temperatures that marine organisms experience are a function of depth and local oceanographic conditions. To monitor this, two cross-shelf transects were established at each bank within the sanctuary. Four years of temperature measurements were retrieved at the East bank (4 depths) and seven at the West bank (3 depths, Fig. 2). Temperature was measured using SeaBird Electronics Subsurface Temperature Recorders (STR)s that collected data at 5-minute intervals. The STRs from west bank were not able to be collected during the last field monitoring trip in 2019. We have included the entire temperature data collection from east bank for better comparison to west bank.MORE TO THIS.
-=======
 The temperatures that marine organisms experience are a function of depth and local oceanographic conditions. To monitor this, two cross-shelf transects were established at each bank within the sanctuary. Three years of temperature measurements were retrieved and processed from eigth sites (depths). Each transect consists of STRs at 4 depths (20, 25, 30, 35m; Fig. 2). Temperature was measured using SeaBird Electronics Subsurface Temperature Recorders (STR)s that collected data at 5-minute intervals. The STRs from west bank were not able to be collected during the last field monitoring trip in 2019. Weve included the entire temperature data collectino from east bank for better comparison to west bank. MORE TO THIS.
->>>>>>> 531e99b8748c704a6fec0421826fa4c7490c56dd:FGB_2022_Field Report.Rmd
 
 
 ```{r filter Temp, include=FALSE}
@@ -477,11 +467,9 @@ Figure2_1 <- ggarrange(plot1, box1, widths = c(8/10, 2/10))
 Figure2_1
 ```
 
-<<<<<<< HEAD:FGB_2022_Field-Report.Rmd
-<font size="2"> **Figure 2:** Temperature conditions at two transects in FGBNMS (east bank, and west bank) representing a depth gradient (21m, 25m, 30 and 35m). Data were collected from September 2015 to October 2022. However, STR from west Bank - 15m was not recovered. </font>
-=======
+
 <font size="2"> **Figure 2:** Temperature conditions at two transects in FGBNMS (east bank, and west bank) representing a depth gradient (20m, 25m, 30m and 35m). Data were collected from September 2015 to October 2022. However, STR from west Bank - 20m was not recovered. </font>
->>>>>>> 531e99b8748c704a6fec0421826fa4c7490c56dd:FGB_2022_Field Report.Rmd
+
  
 ```{r, echo = F, include=F}
 #Temp.Depth <- plyr::ddply (str_all, .(Depth), summarise,
@@ -517,11 +505,8 @@ STR_all_summary
 
 ```
 
-<<<<<<< HEAD:FGB_2022_Field-Report.Rmd
+
 Temperature values were lower in the deeper stations (30 and 35m) of both east and west banks. A particular cold winter was recorded in the year 2021, when monthly mean temperatures were below 20.6$^\circ$C at all depths. September of 2016 was the hottest month recorded in both banks, with mean temperatures higher than 30.76$^\circ$C) at the 21, 25 and 30m stations, and higher than 29.77$^\circ$C) at the 35m stations (Fig. 2).
-=======
-Temperature values were lower in the deeper stations (30 and 35m) of both east and west banks. A particular cold winter was recorded in the year 2021, when monthly mean temperatures were below 20.6∘C at all depths. September of 2016 was the hottest month recorded in both banks, with mean temperatures higher than 30.76∘C) at the 21, 25 and 30m stations, and higher than 29.77∘C) at the 35m stations (Fig. 2).
->>>>>>> 531e99b8748c704a6fec0421826fa4c7490c56dd:FGB_2022_Field Report.Rmd
 
 -----
 
