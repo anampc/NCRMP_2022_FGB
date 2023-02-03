@@ -55,9 +55,9 @@ library(webshot)
 ```
 
 
-```{r front, echo=FALSE, out.width = '75%', fig.cap="Orbicella faveolata in St. Croix, USVI", fig.align='center'}
+```{r front, echo=FALSE, out.width = '75%', fig.cap="Coral reef in the Flower Garden Banks", fig.align='center'}
 
-knitr::include_graphics("Data/STX_NCRMPClimate_2022.jpg")
+knitr::include_graphics("Pictures/Top_1.jpg")
 
 ```
 
@@ -75,8 +75,8 @@ N. Besemer, A. Palacio, A. Webb, I. Enochs - February 2023
 </h5>
 
 ```{r logos, echo=FALSE, fig.align='left', out.width='20%'}
-p1 <- ggdraw() + draw_image("Logos/AOML.jpg", scale = 1)
-p2 <- ggdraw() + draw_image("Logos/CIMAS.png", scale = 0.9)
+p1 <- ggdraw() + draw_image("Logos/NOAA.jpg", scale = 0.7)
+p2 <- ggdraw() + draw_image("Logos/UM.png", scale = 0.9)
 
 plot_grid(p1, p2)
 ```
@@ -254,6 +254,7 @@ light_count<-paste0("Light = ", nrow(light), " observatons")
 **NCRMP Climate Fixed Sentinel Site Monitoring**
 
 At East Buoy 3, 20m site, located on the East Bank, short term instruments (72h) were deployed to  monitor daily fluctuations in: 
+
  * **Current**: 286 observations
  * **pH**: 285 observations
  * **Light**: 288 observations
@@ -742,7 +743,7 @@ Finally, **Calcification Accretion Units (CAUs)** and **Bioerosion Monitoring Un
 
 ```{r BMUs, echo=FALSE, out.width = '50%', fig.cap="Figure 7: CAU and BMU pair before retreval after being deployed for three years. CAUs are two parallel PVC plates to quantify settled accretors. BMU is mounted coral skeleton installed at the base of the metal stake and has been encrusted.", fig.align='center'}
 
-knitr::include_graphics("Data/CAUBMU.jpg")
+knitr::include_graphics("Pictures/FGBCauBMU.JPG")
 
 ```
 
@@ -810,9 +811,9 @@ funding
 ### Our Team
 
 
-```{r team, echo=FALSE, out.width = '50%', fig.align='center', fig.cap="St. Croix, USVI 2022 Field team" }
+```{r team, echo=FALSE, out.width = '50%', fig.align='center', fig.cap="Flower Garden Banks 2022 Field team" }
 
-knitr::include_graphics("Data/Fieldteam.jpg")
+knitr::include_graphics("Pictures/Team.jpg")
 ```
 
 **AOMLs NCRMP Atlantic and Caribbean Climate Team**: I. Enochs, N. Besemer, G. Kolodziej, M. Chakraborty, A.Boyd, M. Jankulak, A. Palacio-Castro, A. Webb, B. Chomitz
