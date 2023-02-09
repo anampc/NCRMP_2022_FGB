@@ -187,10 +187,11 @@ pH <- read_csv('Data/seafet-sn2114-fgb-temporal-suite.csv',col_types = cols()) %
            #Temperature = `pH Temperature (Celsius)`) %>%
            Temperature = `2114-Temp`) %>%
     mutate(DateTime = parse_date_time(DateTime, '%m/%d/%y %H:%M')) %>%
+    mutate(DateTime = with_tz(DateTime, 'America/Chicago'))  %>%
     #manual start/stop time of monitoring
-    #filter(DateTime >= as.POSIXct('2022-10-04 15:00:00', tz='UTC') &
-    #     DateTime <= as.POSIXct('2022-10-07 14:00:00', tz='UTC')) %>%
-    mutate(DateTime = with_tz(DateTime, 'America/Chicago'))
+    filter(DateTime >= as.POSIXct('2022-10-04 11:00:00', tz='America/Chicago') &
+          DateTime <= as.POSIXct('2022-10-07 09:00:00', tz='America/Chicago'))
+    
 
 ```
 
@@ -209,7 +210,7 @@ fileAny <- "Data/tilt-sn2102062-fgb-suite.csv"
   colnames(current) <- c("date","ws","wd")
   #manual start/stop time of monitoring
   current$DateTime<-NA
-  current <- subset(current, date >= ymd_hms("2022-10-04 14:00:00") &
+  current <- subset(current, date >= ymd_hms("2022-10-04 16:00:00") &
                     date <= ymd_hms("2022-10-07 14:00:00"))
   current$DateTime <- lubridate::with_tz(current$date,
                                          "America/Chicago")
@@ -234,7 +235,7 @@ fileAny <- "Data/tilt-sn2102062-fgb-suite.csv"
                     sd = sd(`PAR (calc)`)) %>%
         select(-interval) %>%
   #manual start/stop time of monitoring
-   filter(DateTime >= as.POSIXct('2022-10-04 09:00:00', tz='America/Chicago') &
+   filter(DateTime >= as.POSIXct('2022-10-04 11:00:00', tz='America/Chicago') &
           DateTime <= as.POSIXct('2022-10-07 09:00:00', tz='America/Chicago'))
 
 summary(light$DateTime)
@@ -369,7 +370,7 @@ addCircleMarkers(lng = ~Lon, lat = ~Lat,
                      textOnly = TRUE,
                      style = list(
         "color" = "black")))
-map
+#map
 
 
 # addControl(map, position="topright",
@@ -517,7 +518,7 @@ Seawater carbonate chemistry can fluctuate diurnally, due to biological forcing 
 Samplers (SAS, https://www.coral.noaa.gov/accrete/sas/, Fig. 3). These samples will be analyzed for Total Alkalinity (TA), Dissolved Inorganic Carbon (DIC), and Spectrophotometric pH (SpecpH), which will be used to calculate pCO2 and aragonite saturation state (ΩAragonite).
 
 
-A suite of instruments was deployed for a 72-hour period at the East Bank 20m site (Fig. 4). A SeaFET was used to log pH, an EcoPAR measured Photosynthetically Active Radiation (PAR), and a Lowell Tiltmeter measured current speed and direction. Each collected measurements at 15-minute intervals.
+A suite of instruments was deployed for a 72-hour period at the East Bank 20m site. A SeaFET was used to log pH, an EcoPAR measured Photosynthetically Active Radiation (PAR), and a Lowell Tiltmeter measured current speed and direction. Each collected measurements at 15-minute intervals (Fig. 3).
 
 
 ```{r ph and temp combined v3,echo=FALSE, warning=FALSE,fig.width = 9.5, fig.height = 3.5}
@@ -547,9 +548,9 @@ pH_Temp_Plot<-ggplot(data = pH) +
   
    annotate("text",
           label = paste("Oct", 04:06),
-          x = seq.POSIXt(as.POSIXct('2022-10-04 12:00:00', tz='America/Chicago'),
+          x = seq.POSIXt(as.POSIXct('2022-10-04 13:00:00', tz='America/Chicago'),
                          by = "day", length.out = 3),
-          y = pH_max+0.015)+ 
+          y = pH_max+0.025)+ 
   # Data
   geom_line(aes(x=DateTime, y=Temp.adj, color = "Temperature"),
             size=0.8) +
@@ -662,13 +663,6 @@ ggdraw(plot_grid(plot_grid(pH_Temp_Plot,
 ```
 
 <font size="2">**Figure 3:** Data from East Buoy 3 diurnal suite monitoring from October 4th to Oct 7th. Top panel: pH and temperature from SeaFET. Bottom panel: Photosynthetically Available Radiation (PAR) and current speed from EcoPAR and Tiltmeter. Grey blocks denote night time throughout sequence of the plot. Instruments measured parameters every 15 minutes.</font>
-
-
-```{r SASs, echo=FALSE, out.width = '50%', fig.cap="Figure 4: Submered Automated Samplers (SAS) deployed to collect water samples every 3 hours", fig.align='center'}
-
-knitr::include_graphics("Data/SAS.jpg")
-
-```
 
 -----
 
