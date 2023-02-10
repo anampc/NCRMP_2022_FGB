@@ -55,7 +55,7 @@ library(webshot)
 ```
 
 
-```{r front, echo=FALSE, out.width = '75%', fig.cap="Coral reef in the Flower Garden Banks", fig.align='center'}
+```{r front, echo=FALSE, out.width = '75%', fig.cap="Coral reef at East Buoy 3 in the Flower Garden Banks", fig.align='center'}
 
 knitr::include_graphics("Pictures/Top_1.jpg")
 
@@ -155,7 +155,7 @@ summary(STR_all$Transect)
 ```
 
 **Subsurface temperature** 
-Subsurface temperature recorders (STRs) were recovered and redeployed at east and west bank transects, each one composed by 4 depths (Fig. 1). In total,  more than 4 million temperature observations were collected (Table 1)
+Subsurface temperature recorders (STRs) were recovered and redeployed at east and west bank transects, including 4 instruments rangin in depth from 20m to 35m  (Fig. 1). In total,  more than 4 million temperature observations were collected from 7 different instruments (Table 1).
   
 ```{r Temp observations}
 Cases_Loc_depth<-STR_all %>% count(Depth, Transect,
@@ -385,7 +385,7 @@ addCircleMarkers(lng = ~Lon, lat = ~Lat,
 
 #### Subsurface Temperature
 
-The temperatures that marine organisms experience are a function of depth and local oceanographic conditions. To monitor this, two cross-shelf transects were established at each bank within the sanctuary. Three years of temperature measurements were retrieved and processed from eigth sites (depths). Each transect consists of STRs at 4 depths (20, 25, 30, 35m; Fig. 2). Temperature was measured using SeaBird Electronics Subsurface Temperature Recorders (STR)s that collected data at 5-minute intervals. The STRs from west bank were not able to be collected during the last field monitoring trip in 2019. Weve included the entire temperature data collectino from east bank for better comparison to west bank. MORE TO THIS.
+The temperatures that marine organisms experience are a function of depth and local oceanographic conditions. To monitor this, two cross-shelf transects were established at each bank within the sanctuary. Three years of temperature measurements were retrieved and processed from eigth sites (depths). Each transect consists of STRs at 4 depths (20, 25, 30, 35m; Fig. 2). Temperature was measured using SeaBird Electronics Subsurface Temperature Recorders (STR)s that collected data at 5-minute intervals. The STRs from west bank were not able to be collected during the last field monitoring trip in 2019. Weve included the entire temperature data collectino from east bank for better comparison to west bank.
 
 
 ```{r filter Temp, include=FALSE}
@@ -668,7 +668,9 @@ ggdraw(plot_grid(plot_grid(pH_Temp_Plot,
 
 #### Habitat persistence
 
-**Carbonate budget** assessments use transect-based surveys to quantify the abundance of carbonate producers, such as corals and crustose coralline algae, as well as carbonate bioeroders, such as grazing parrotfish and sea urchins. Abundances are multiplied by taxon- specific rates of carboante alteration to determine if a reef is in a state of net accretion (habitat growth) or net loss (habitat loss). At East Buoy 3, six transects were established and surveyed in 2015 to obtain carbonate budgets. We revisited this site in 2019 and 2022 to find out the new status of carbonate budget after six years. The transect results showed that carbonate budgets have decreased in 2022. This trend is driven by a reduction in coral cover and calcification as well as a steep increase in parrotfish erosion. MORE SUMMAITON TEXT FOR FGB CARB BUDGETS
+**Carbonate budget** assessments use transect-based surveys to quantify the abundance of carbonate producers, such as corals and crustose coralline algae, as well as carbonate bioeroders, such as grazing parrotfish and sea urchins. Abundances are multiplied by taxon- specific rates of carboante alteration to determine if a reef is in a state of net accretion (habitat growth) or net loss (habitat loss). At East Buoy 3, six transects were established and surveyed in 2015 to obtain carbonate budgets. We revisited this site in 2019 and 2022 to find out the new status of carbonate budget after six years.
+
+While collecting this years data, divers noticed abundant signs of high bioerosion activity by parrot fish. Entire colonies were scraped away around the vicinity of East Buoy 3 and in other sites too. The increase in bioerosion rates in our records was due to the sighting of very large individuals across the transects which caused a 4-fold increase in rates of parrotfish bioerosion from 2019 to 2022. This, in addition with reduced coral cover, resulted in a decrease in net community calcification of more than 4kg m-2 yr-1. Macro bioerosion also increased significantly in the year 2022 which could either be due to an increase in the abundance of bioerosion sponges in the area or a bias between surveyors. 
 
 
 
@@ -743,6 +745,13 @@ knitr::include_graphics("Pictures/FGBCauBMU.JPG")
 
 -----
 
+#### Additional Work
+
+During a separate monitoring cruise that took place in August, an increase in coral lesions were noticed a variety of coral species which could be a possible indiciation of a coral disease. The climate monitoring on this cruise was completed efficiently to allow for some opportunistic sampling of the lesions. This time allowed for 99 coral samples were sampled for Histology of coral disease, 100 coral samples were collected for ‘omics
+research and 13 live colonies were recovered to complete land based monitoring of lesion progression. 
+
+-----
+
 ### About the monitoring program
 
 AOML's climate monitoring is a key part of the National Coral Reef Monitoring Program of NOAA's Coral Reef Conservation Program (CRCP), providing integrated, consistent, and comparable data across U.S. Managed coral reef ecosystems.
@@ -778,7 +787,7 @@ http://www.aoml.noaa.gov/
 ### Acknowledgements
 
 
-These efforts were jointly funded by NOAA's CRCP project #743 and OAP. We would like to sincerely thank Flower Garden Banks and  the National Marine Santuary Foundation for supporting our field efforts and assisting monitoring surveys.
+These efforts were jointly funded by NOAA's CRCP project #743 and OAP. We would like to sincerely thank Flower Garden Banks and the National Marine Santuary Foundation for supporting our field efforts and assisting monitoring surveys.
 
 ```{r fundingsources, include=FALSE, fig.width = 10, fig.height = 4, fig.align='center', out.width='100%'}
 
