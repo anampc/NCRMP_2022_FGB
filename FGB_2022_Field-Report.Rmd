@@ -64,7 +64,7 @@ National Oceanic Atmospheric Administration</h4>
 <br>
 
 <h5 style="font size=6">
-N. Besemer, A. Palacio, A. Webb, I. Enochs - February 2023...test
+N. Besemer, A. Palacio, A. Webb, K. Simmons, I. Enochs - March 2023
 </h5>
 
 ```{r logos, echo=FALSE, fig.align='left', out.width='20%'}
