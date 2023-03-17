@@ -44,14 +44,7 @@ library(cowplot)
 
 library(knitr)
 
-# Map
-library(leaflet)
 
-# Dynamic html to static
-#install.packages("webshot")
-library(webshot)
-#webshot::install_phantomjs()
-#library(PhantomJS)
 ```
 
 
@@ -236,7 +229,7 @@ fileAny <- "Data/tilt-sn2102062-fgb-suite.csv"
         select(-interval) %>%
   #manual start/stop time of monitoring
    filter(DateTime >= as.POSIXct('2022-10-04 11:00:00', tz='America/Chicago') &
-          DateTime <= as.POSIXct('2022-10-07 09:00:00', tz='America/Chicago'))
+          DateTime <= as.POSIXct('2022-10-07 08:00:00', tz='America/Chicago'))
 
 summary(light$DateTime)
 
@@ -279,107 +272,12 @@ Changes in Bioerosion and accretion were monitored
 
 <br>
 
-```{r mapInfo, include=FALSE, fig.align='center'}
-# Map information
 
-# Add info from the sampling stations
-stations <- as.data.frame(read.csv(textConnection("
-Site,	Lat,	Lon
-East Buoy 3 shallow,	27.90685,	-93.59923
-East Bank Deep STRs,	27.90860,	-93.59718
-West Bank STRs,	27.87617,	-93.81405")))
-stations$Site<-as.character(stations$Site)
-#stations$Depth<-as.character(stations$Depth)
-stations$Site<-factor(stations$Site, levels = c("East Buoy 3 shallow",
-                                                "East Bank Deep STRs",
-                                                "West Bank STRs"))
-#stations$Depth<-ordered(stations$Depth, levels = c("-1m", "0m", "1m","5m", "15m","25m"))
-#summary(stations)
-kable(head(stations, format = "html"))
+```{r map, echo=FALSE, out.width = '50%', fig.cap="Figure 1: Study sites and depths in Flower Garden Banks", fig.align='center'}
 
-# #summary(stations)
-# # Change color depending on type of data?
-# 
-#   # Create palette 
-#   #brewer.pal(n = 9, name = "Blues")
-#   #library(RColorBrewer)
-#   #my_blues <- c(brewer.pal(9, "Blues")[c(4,5,6,7,8, 9)])
-#   
-#   # Assigne it to Depth and locations
-#   pal.gen <- colorFactor(palette = "Blues",
-#                          domain = stations$Depth)
-#   brewer.pal(n=8, "Blues")
-# 
- pal.gen2 <- colorFactor(palette = "Blues",
-                        domain = stations$Site)
-# # Noth arrow
-#   #North <- "Data/North-Arrow.png"
-#   
-#   myicon <- makeIcon( iconUrl = "Data/North-Arrow.png", 
-#                     iconWidth=30,
-#                     iconHeight=30)
+knitr::include_graphics("Pictures/fgb_sitemap.jpg")
 
 ```
-
-```{r makeAmap1, echo=FALSE, fig.width = 5, fig.height = 6, fig.align='center'}
-map1<-leaflet(stations, width = '600px') %>%
-  addTiles() %>%
-  #addProviderTiles(providers$Esri.WorldGrayCanvas) %>%
-
-  # addLegend(position = "bottomright",
-  #           pal = pal.gen2,
-  #           values = ~Site, opacity = 1) %>%
-  addScaleBar(position = "bottomright") %>%
-
-  fitBounds(lng1=-94.5, lat=29.80, lng2=-93.0, lat2=27.7)%>%
-
-addCircleMarkers(lng = ~Lon, lat = ~Lat,
-                   stroke = T,
-                   fillOpacity = 0.8,
-                   radius = 4)
-map1
-
-
-# addControl(map, position="topright",
-#           html = '<img src="Data/North-Arrow.png">')
-
-  
-```
-
-```{r makeAmap, echo=FALSE, fig.width = 10, fig.height = 3.7, fig.align='center'}
-map<-leaflet(stations, width = '700px') %>%
-  addTiles() %>%
-  #addProviderTiles(providers$Esri.WorldGrayCanvas) %>%
-
-  # addLegend(position = "bottomright",
-  #           pal = pal.gen2,
-  #           values = ~Site, opacity = 1) %>%
-  addScaleBar(position = "bottomright") %>%
-
-  fitBounds(lng1=-93.815, lat=27.85, lng2=-93.54, lat2=27.91)%>%
-
-addCircleMarkers(lng = ~Lon, lat = ~Lat,
-                   stroke = T,
-                   fillOpacity = 0.8,
-                   radius = 5,
-                   #color = ~pal.gen(Site),
-                   label = ~Site,
-                   labelOptions = labelOptions(
-                     noHide = T,
-                     direction = "bottom",
-                     textOnly = TRUE,
-                     style = list(
-        "color" = "black")))
-#map
-
-
-# addControl(map, position="topright",
-#           html = '<img src="Data/North-Arrow.png">')
-
-  
-```
-
-<font size="2"> **Figure 1:** Study sites and depths in Flower Garden Banks </font>
 
 -----
 
@@ -730,7 +628,7 @@ ggarrange(CB_A_plot, CB_B_plot,
 
 ```{r mosaic, echo=FALSE, out.width = '50%', fig.cap="Figure 6: Landscape Mosaic collected from transect 6", fig.align='center'}
 
-knitr::include_graphics("Data/mosaic.jpg")
+knitr::include_graphics("Pictures/mosaic.jpg")
 
 ```
 
@@ -745,10 +643,16 @@ knitr::include_graphics("Pictures/FGBCauBMU.JPG")
 
 -----
 
-#### Additional Work
+#### Rapid response to coral lesions 
 
-During a separate monitoring cruise that took place in August, an increase in coral lesions were noticed a variety of coral species which could be a possible indiciation of a coral disease. The climate monitoring on this cruise was completed efficiently to allow for some opportunistic sampling of the lesions. This time allowed for 99 coral samples were sampled for Histology of coral disease, 100 coral samples were collected for ‘omics
-research and 13 live colonies were recovered to complete land based monitoring of lesion progression. 
+During a separate monitoring cruise that took place in August, an increase in coral lesions were noticed a variety of coral species which could be a possible signs of a coral disease outbreak. The climate monitoring on this cruise was completed efficiently to allow for some opportunistic sampling of the lesions. Coral samples were collected for histology (n= 99), and ‘omics (n=100) analyses. Additionally, 13 live colonies were recovered to complete land based monitoring of lesion progression.
+
+
+```{r disease, echo=FALSE, out.width = '50%', fig.cap="Figure 8: Colonies sowing lesions at the FGB.", fig.align='center'}
+
+knitr::include_graphics("Pictures/Lesions.jpg")
+
+```
 
 -----
 
