@@ -1,5 +1,3 @@
-[![DOI](https://zenodo.org/badge/doi/XXXX.svg)](http://dx.doi.org/XXXXXXX)
-
 This repository contains data and analysis scripts from the Flower Garden Banks NCRMP report:
 
 ## Climate Monitoring Brief: Flower Garden Banks
